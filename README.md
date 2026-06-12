@@ -1,6 +1,6 @@
 # UE Nodes
 
-## Love this node?
+## Love this node? 
 
 [Buy me a coffee!](https://www.buymeacoffee.com/chrisgoringe)
 
@@ -10,24 +10,24 @@ Check out [Image Picker](https://github.com/chrisgoringe/cg-image-filter) for an
 
 # What is Anything Everywhere?
 
-The `Anything Everywhere` node takes one or more inputs and sends the data to other nodes that need it.
+The `Anything Everywhere` node takes one or more inputs and sends the data to other nodes that need it. 
 You can connect as many inputs to an `Anything Everywhere` node as you like, and there are a range of ways
 to control where the data will be sent.
 
 Here's the standard ComfyUI template modified to use `AnythingEverywhere`
 
-| workflow                           | output image you can drop into Comfy     |
-| ---------------------------------- | ---------------------------------------- |
-| ![simple](docs/simple-example.png) | ![simple](docs/simple-example-image.png) |
+|workflow|output image you can drop into Comfy|
+|-|-|
+|![simple](docs/simple-example.png)|![simple](docs/simple-example-image.png)|
 
 The `MODEL`, `CLIP`, and `VAE` are automatically broadcast to all the places they are needed.
 
 Doesn't make much difference in this simple case, but with complex workflows it really does.
 This is what the default wan 2.2 s2v video workflow looks like:
 
-| before                     | after                    |
-| -------------------------- | ------------------------ |
-| ![before](docs/before.png) | ![after](docs/after.png) |
+|before|after|
+|-|-|
+|![before](docs/before.png)|![after](docs/after.png)|
 
 # Getting started
 
@@ -89,16 +89,16 @@ Yes. See Combo Clone node [here](https://github.com/chrisgoringe/cg-use-everywhe
 
 ## 7.3
 
-Bugfixes:
-[361](https://github.com/chrisgoringe/cg-use-everywhere/issues/361),
-[379](https://github.com/chrisgoringe/cg-use-everywhere/issues/379),
+Bugfixes: 
+[361](https://github.com/chrisgoringe/cg-use-everywhere/issues/361), 
+[379](https://github.com/chrisgoringe/cg-use-everywhere/issues/379), 
 [381](https://github.com/chrisgoringe/cg-use-everywhere/issues/381)
 
 ## 7.2.1 and 7.2.2
 
-Bugfixes:
-[383](https://github.com/chrisgoringe/cg-use-everywhere/issues/383),
-[384](https://github.com/chrisgoringe/cg-use-everywhere/issues/384),
+Bugfixes: 
+[383](https://github.com/chrisgoringe/cg-use-everywhere/issues/383), 
+[384](https://github.com/chrisgoringe/cg-use-everywhere/issues/384), 
 [388](https://github.com/chrisgoringe/cg-use-everywhere/issues/388)
 
 ## 7.2
@@ -127,9 +127,9 @@ As of version `7.4`, any node can be set to broadcast with `Add UE broadcasting`
 
 When broadcasting, the node acts like all its outputs were connected to a single UE node, so
 
-| This...                       | ...does the same as this          |
-| ----------------------------- | --------------------------------- |
-| ![with](docs/broadcaston.png) | ![without](docs/broadcastoff.png) |
+|This...|...does the same as this|
+|-|-|
+|![with](docs/broadcaston.png)|![without](docs/broadcastoff.png)|
 
 From `7.5`, the outputs that will broadcast can also be set (like inputs):
 
@@ -141,7 +141,7 @@ From `7.5`, the outputs that will broadcast can also be set (like inputs):
 
 The key to using Anything Everywhere nodes is understanding where the data will be sent.
 
-By default the data will be sent to any input of the same data type which does not have a connection,
+By default the data will be sent to any input of the same data type which does not have a connection, 
 and does not have a widget providing the value.
 
 <details>
@@ -153,16 +153,16 @@ Restrictions can be accessed by double-clicking the body of the node, or through
 
 ![restrictions](docs/restrictions.png)
 
-The first three entries are [regex](https://regex101.com/) patterns.
+The first three entries are [regex](https://regex101.com/) patterns. 
 The node will only send data to another node if the regex matches the receiving node title, the name of the input, or the name of a group the receiving node is in, respectively. Check the 'invert' checkbox to invert the regex (send only to things which _don't_ match).
 
 The Group and Colour restrictions will constrain the node to only send to nodes in (or not in) the same group, and of the same (or different) colour.
 
 `Repeated Types` determines behaviour when more than one input of the same type is connected to an `Anything Everywhere` node.
-In this case an additional constraint is used to disambiguate which inputs match
-by comparing the name of the input slot on the `Anything Everywhere` node with
+In this case an additional constraint is used to disambiguate which inputs match 
+by comparing the name of the input slot on the `Anything Everywhere` node with 
 either the name of the input slot on the target node, or the name of the target node.
-The `match start` and `match end` options require that the input names match from the start (or end) for the full length of the shorter:
+The `match start` and `match end` options require that the input names match from the start (or end) for the full length of the shorter: 
 so you can match `seed` to `seed` or `noise_seed` by naming the `Anything Everywhere` input `seed` and selecting `Match end of input names`.
 
 You can also give the output a name which is a regex, and select `Regex match of input names` - so if your output is named `prompt|text` it
@@ -170,9 +170,9 @@ will match inputs named `prompt` or `text`.
 
 If `Apply to Unrepeated` is set to `Yes`, the `Repeated Types` rule will be applied to all outputs, whether or not they are repeated.
 
-`Send To Any`(default 'no') can be used to allow this node to send data to inputs with the `Any` type.
+`Send To Any`(default 'no') can be used to allow this node to send data to inputs with the `Any` type. 
 
-`Priority` is used to resolve conflicts between multiple sending nodes. It has a default value (which generally follows the rule that the more restrictive the rules, the higher the priority), but you can override that value.
+`Priority` is used to resolve conflicts between multiple sending nodes. It has a default value (which generally follows the rule that the more restrictive the rules, the higher the priority), but you can override that value. 
 
 If you select multiple restrictions, all must be satisfied for the node to send.
 
@@ -187,11 +187,10 @@ You can rename input slots by right-clicking on the input dot - but you can't re
 At the receiving end: you can specify that an input should not accept data, or that one with a widget should.
 </summary>
 
-In the `UE Connectable Inputs` menu (right-click on a node):
+In the `UE Connectable Inputs` menu (right-click on a node): 
 the green bar indicates an input is connectable. The `Reject UE links` option can be used to make this node completely reject UE links, regardless of other settings.
 
 ![uec](docs/connectable.png)
-
 </details>
 
 <details>
@@ -219,10 +218,9 @@ Anything Everywhere has a number of ways to help you visualise what it is doing.
 
 If you want to see the UE links, you can turn them on and off by right-clicking on the canvas. For finer control, the main settings menu has options to show links when the mouse moves over the node at either end, or when one of those nodes is selected.
 
-The links can be animated to distinguish them from normal links - this animation can take the form of moving dots, a pulsing glow, or both. This may impact performance in some cases - note that the pulse animation requires less processing than the moving dots. Control this in the main settings menu.
+The links can be animated to distinguish them from normal links - this animation can take the form of moving dots, a pulsing glow, or both. This may impact performance in some cases - note that the pulse animation requires less processing than the moving dots. Control this in the main settings menu. 
 
 Animation takes quite a lot of processing, so don't use it unless you really need to. By default the animations turn off when the workflow is running to minimise impact on CPU/GPU - you can change this in the settings too.
-
 </details>
 
 <details>
@@ -230,21 +228,20 @@ Animation takes quite a lot of processing, so don't use it unless you really nee
 
 Any node that is capable of broadcasting data (a UE node, or another node to which broadcasting has been added) is marked with a circle in the top left hand corner.
 
-If the circle is green, the node has no additional restrictions on where data will be sent;
-if it is yellow, it has one or more restrictions (which you can see by hovering your mouse over it, or by editing restrictions
+If the circle is green, the node has no additional restrictions on where data will be sent; 
+if it is yellow, it has one or more restrictions (which you can see by hovering your mouse over it, or by editing restrictions 
 with the option on the right click menu, or by double clicking the node).
 
 If the node is actually sending data, the circle (red or yellow) is bold; if the node is capable of sending but is not actually making
 and connections, it is muted.
 
 ![redgreen](docs/yellowgreen.png)
-
 </details>
 
 <details>
 <summary>Inputs and outputs have a subtle visual clue</summary>
 
-The state of inputs is also represented visually: a black ring and a glow on the input dot indicates it is connectable.
+The state of inputs is also represented visually: a black ring and a glow on the input dot indicates it is connectable. 
 In the image below, `positive` has been set to not accept UE inputs, `steps` has been set to accept them, and `model` has a UE connection.
 
 ![uec](docs/connectable2.png)
@@ -253,7 +250,7 @@ If a widget is getting data from a UE connection, it is grayed out, like `steps`
 
 ![uec](docs/connectable3.png)
 
-Similarly, if a node has had broadcasting added to it, the outputs that can broadcast are shown:
+Similarly, if a node has had broadcasting added to it, the outputs that can broadcast are shown: 
 here `merged` can broadcast, but isn't, `x` can broadcast and is, and `y` is set to not broadcast.
 
 ![outputs](docs/outputs.png)
@@ -263,7 +260,7 @@ here `merged` can broadcast, but isn't, `x` can broadcast and is, and `y` is set
 <details>
 <summary>Conflicts show up in red</summary>
 
-If two (or more) broadcasters with the same priority could send to the same input, the input will be marked with a red cross.
+If two (or more) broadcasters with the same priority could send to the same input, the input will be marked with a red cross. 
 If UE links are being shown all possible links are shown in red. Here two model loaders are broadcasting...
 
 ![conflict](docs/conflict.png)
@@ -283,26 +280,28 @@ Connect the `Combo Clone` output to a widget you want it to replicate. The `Comb
 
 ![CC2](docs/ComboClone2.png)
 
-Disconnect the `Combo Clone` and connect it to an `Anything Everywhere` node. The name copying means you can connect multiple Combos to a single `Anything Everywhere` node.
+Disconnect the `Combo Clone` and  connect it to an `Anything Everywhere` node. The name copying means you can connect multiple Combos to a single `Anything Everywhere` node.
 
 ![CC3](docs/ComboClone3.png)
 
-It can now broadcast to any node with the same input type (but remember you will have to mark the Combo widget as UE Connectable, since widgets are not connectable by default).
+It can now broadcast to any node with the same input type (but remember you will have to mark the Combo widget as UE Connectable, since widgets are not connectable by default). 
 
 </details>
 
 <details>
 <summary>Prompts Everywhere handles a positive and a negative prompt</summary>
 
+
 Prompt Everywhere has two inputs. They will be sent with regex matching rules designed to match `prompt` or `positive`, and `neg`, respectively.
 
 The actual regexes used are `(_|\\b)pos(itive|_|\\b)|^prompt|正面` and `(_|\\b)neg(ative|_|\\b)|负面`
 
-| strings            | conditionings                |
-| ------------------ | ---------------------------- |
-| ![pe](docs/PE.png) | ![pe](docs/conditioning.png) |
+|strings|conditionings|
+|-|-|
+|![pe](docs/PE.png)|![pe](docs/conditioning.png)
 
 </details>
+
 
 <details>
 <summary>Seed Everywhere, Anything Everywhere? and Anything Everywhere3 are deprecated and will be automatically replaced</summary>
@@ -317,6 +316,7 @@ These replacements should not break any workflows. If they do... sorry.
 
 </details>
 
+
 # Options
 
 <details>
@@ -326,7 +326,7 @@ In the main settings menu, you will find the Use Everywhere options:
 
 ![options](docs/options.png)
 
-The top set, `Graphics`, modify the visual appearance only.
+The top set, `Graphics`, modify the visual appearance only. 
 
 The bottom set, `Options`, modify behaviour:
 
@@ -349,7 +349,7 @@ UE nodes work with the new primitives added in more recent versions of Comfy (in
 UE nodes do not work with the old-style `Primitive` nodes (which automatically determined what data type they needed to be),
 nor do they work with reroute nodes.
 
-In both cases that is dues to some issues that are deep within ComfyUI, related to the way that these nodes work out
+In both cases that is dues to some issues that are deep within ComfyUI, related to the way that these nodes work out 
 the data type they represent, which makes it next to impossible for UE to correctly interact with them.
 
 </details>
@@ -361,21 +361,20 @@ the data type they represent, which makes it next to impossible for UE to correc
 Third Party Integration - the UE API
 </summary>
 
-At the suggestion of [@fighting-tx](https://github.com/fighting-tx),
-I've added a method that third party nodes can use if they want to see the prompt as generated by UE.
+At the suggestion of [@fighting-tx](https://github.com/fighting-tx), 
+I've added a method that third party nodes can use if they want to see the prompt as generated by UE. 
 It's attached to the `app` object, so you can check if it is present and use it something like this:
 
 ```js
-var prompt;
+var prompt
 if (app.ue_modified_prompt) {
-  prompt = await app.ue_modified_prompt();
+  prompt = await app.ue_modified_prompt()
 } else {
-  prompt = await original_graphToPrompt.apply(app);
+  prompt = await original_graphToPrompt.apply(app)
 }
 ```
 
-Other methods could be exposed if there is interest - raise an issue if you'd like to see something.
-
+Other methods could be exposed if there is interest - raise an issue if you'd like to see something. 
 </details>
 
 <details>
@@ -391,7 +390,7 @@ This can be done for a single node by right-clicking on it and selecting `Conver
 
 # Subgraphs
 
-Anything Everywhere works fairly well with the new subgraphs (and setting a subgraph to broadcast its outputs is very powerful!).
+Anything Everywhere works fairly well with the new subgraphs (and setting a subgraph to broadcast its outputs is very powerful!). 
 A couple of caveats:
 
 <details>
@@ -399,17 +398,17 @@ A couple of caveats:
 
 Anything Everywhere will not make links from nodes in one graph into a different graph. So you cannot broadcast data into a subgraph, nor can you broadcast it out.
 
-This is a deliberate design decision, reflecting the fundamental principle of subgraphs - that they are self contained.
-Data can only go in or out of a subgraph through its input and output panels.
+This is a deliberate design decision, reflecting the fundamental principle of subgraphs - that they are self contained. 
+Data can only go in or out of a subgraph through its input and output panels. 
 This sort of data isolation is a very good thing in terms of maintaining a workflow, and by working consistently with the expectated
 behaviour of subgraphs it is far less like that future changes in the front end will break Anything Everywhere.
 
 This is not open for discussion. There are plenty of better ways to achieve the same end.
 
-An Anything Everywhere node in your main graph can send to the input of a subgraph node;
+An Anything Everywhere node in your main graph can send to the input of a subgraph node; 
 you can also connect as Anything Everywhere node to one of the inputs inside a subgraph.
 
-You can connect an output of the subgraph node to an Anything Everywhere node (or set the subgraph node to broadcast),
+You can connect an output of the subgraph node to an Anything Everywhere node (or set the subgraph node to broadcast), 
 and you can broadcast from within the subgraph to the output panel of the subgraph.
 
 </details>
@@ -418,26 +417,25 @@ and you can broadcast from within the subgraph to the output panel of the subgra
 
 <summary>When you create a subgraph, Anything Everywhere nodes do their best...</summary>
 
-There are three nodes involved in every UE link:
-
-- Source (the link sending the data),
-- Control (the UE node connected to the source),
+There are three nodes involved in every UE link: 
+- Source (the link sending the data), 
+- Control (the UE node connected to the source), 
 - Target (the node that is receiving the data as an input)
 
 This is how those cases are treated:
 
-| Support | Source   | Control  | Target   |                                                                                                                                                 |
-| ------- | -------- | -------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| Yes     | Graph    | Graph    | Graph    | Nothing changes                                                                                                                                 |
-| Yes     | Graph    | Graph    | Subgraph | The subgraph will have inputs for the data; in the subgraph the input panel is connected to the Target with a real link                         |
-| No      | Graph    | Subgraph | Graph    | Not supported                                                                                                                                   |
-| No\*    | Graph    | Subgraph | Subgraph | Not supported                                                                                                                                   |
-| Yes     | Subgraph | Graph    | Graph    | The subgraph will be connected to the Control                                                                                                   |
-| No      | Subgraph | Graph    | Subgraph | Not supported                                                                                                                                   |
-| Yes     | Subgraph | Subgraph | Graph    | The Source will be connected to the Control _and_ the output panel in the subgraph, the output will be connected to the Target with a real link |
-| Yes     | Subgraph | Subgraph | Subgraph | All nodes will be connected in the subgraph as they were in the graph                                                                           |
+|Support|Source|Control|Target||
+|-|-|-|-|-|
+|Yes|Graph|Graph|Graph|Nothing changes|
+|Yes|Graph|Graph|Subgraph|The subgraph will have inputs for the data; in the subgraph the input panel is connected to the Target with a real link|
+|No|Graph|Subgraph|Graph|Not supported|
+|No*|Graph|Subgraph|Subgraph|Not supported|
+|Yes|Subgraph|Graph|Graph|The subgraph will be connected to the Control|
+|No|Subgraph|Graph|Subgraph|Not supported|
+|Yes|Subgraph|Subgraph|Graph|The Source will be connected to the Control *and* the output panel in the subgraph, the output will be connected to the Target with a real link|
+|Yes|Subgraph|Subgraph|Subgraph|All nodes will be connected in the subgraph as they were in the graph|
 
-No\* indicates a case that does not work, but might get implemented.
+No* indicates a case that does not work, but might get implemented.
 
 No indicates a case I'm unlikely ever to support
 
@@ -445,25 +443,25 @@ No indicates a case I'm unlikely ever to support
 
 # Reporting a bug well
 
-If there is a bug in Anything Everywhere, I want to fix it.
+If there is a bug in Anything Everywhere, I want to fix it. 
 But my ability to do so depends on the quality of the information I have.
 
-Seriously, people submit bug reports which just say "It isn't working since I updated".
+Seriously, people submit bug reports which just say "It isn't working since I updated". 
 Well, it's working for me, so I don't have any idea what your problem is.
 
 Give me good information, and if I can reproduce the problem, there's a good chance I'll fix it (or suggest a work-around).
 
-So if you have a problem, go to [the issues page](https://github.com/chrisgoringe/cg-use-everywhere/issues),
+So if you have a problem, go to [the issues page](https://github.com/chrisgoringe/cg-use-everywhere/issues), 
 click on `New Issue`, select, `Bug Report`, and fill in as much of the information as you can.
 
 # Suggesting new features
 
-Go to [the issues page](https://github.com/chrisgoringe/cg-use-everywhere/issues),
-click on `New Issue`, select, `Feature Request`, and tell me your idea.
-If you can explain why the feature would be helpful to you, and ideally to others, I'm
+Go to [the issues page](https://github.com/chrisgoringe/cg-use-everywhere/issues), 
+click on `New Issue`, select, `Feature Request`, and tell me your idea. 
+If you can explain why the feature would be helpful to you, and ideally to others, I'm 
 much more likely to think about whether it's possible.
 
-# Thanks to
+# Thanks to 
 
 The following people have contributed code or helpful discussions, without which these nodes would be less good!
 
@@ -506,7 +504,7 @@ There are a couple of features that have been removed:
 
 ## Upgrade considerations
 
-Other than the limitations noted, old workflows _should_ load and work out of the box,
+Other than the limitations noted, old workflows _should_ load and work out of the box, 
 with `Anything Everywhere3` and `Anything Everywhere?` nodes automatically converted to `Anything Everywhere` nodes with the appropriate restrictions applied.
 
 However, there may be edge cases that don't work; if you have any problems, please [raise an issue](https://github.com/chrisgoringe/cg-use-everywhere/issues).
